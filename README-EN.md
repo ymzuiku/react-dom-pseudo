@@ -18,19 +18,18 @@ $ npm install --save react-dom-pseudo
 
 Will merge with all styles and override duplicate style properties
 
-| Props                                           | Analog pseudo-class | Description                                   | Default Value | Is Must |
-| ----------------------------------------------- | ------------------- | --------------------------------------------- | ------------- | ------- |
-| merge                                           |                     |
-| Whether to merge with `style` and `otherStyles` | true                | No                                            |
-| disable                                         |                     | Whether to cancel the event listener          | false         | No      |
-| style                                           |                     | Style of default                              | undefined     | No      |
-| linkStyle                                       | :link               | Style of not clicked before                   | undefined     | No      |
-| visitedStyle                                    | :visited            | Style of that has been clicked                |               | No      |
-| focusStyle                                      | :focus              | Style of type element such as input onFocus   | undefined     | No      |
-| hoverStyle                                      | :hover              | Style of displayed when the mouse is moved in |               | No      |
-| activeStyle                                     | :active             | Style of when mouse or touch screen clicks    |               | No      |
-| disableStyle                                    |                     | Style of when disable event listener          |               | No      |
-| alwayStyle                                      |                     | Merge with all styles                         |               | No      |
+| Props        | Analog pseudo-class | Description                                     | Default Value | Is Must |
+| ------------ | ------------------- | ----------------------------------------------- | ------------- | ------- |
+| merge        |                     | Whether to merge with `style` and `otherStyles` | true          | No      |
+| disable      |                     | Whether to cancel the event listener            | false         | No      |
+| style        |                     | Style of default                                | undefined     | No      |
+| linkStyle    | :link               | Style of not clicked before                     | undefined     | No      |
+| visitedStyle | :visited            | Style of that has been clicked                  | undefined     | No      |
+| focusStyle   | :focus              | Style of type element such as input onFocus     | undefined     | No      |
+| hoverStyle   | :hover              | Style of displayed when the mouse is moved in   | undefined     | No      |
+| activeStyle  | :active             | Style of when mouse or touch screen clicks      | undefined     | No      |
+| disableStyle |                     | Style of when disable event listener            | undefined     | No      |
+| alwayStyle   |                     | Merge with all styles                           | undefined     | No      |
 
 They will trigger based on the event，and merge `style`， like `{...style, ...activeStyle}`
 
