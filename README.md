@@ -24,10 +24,10 @@ $ npm install --save react-dom-pseudo
 | linkStyle    | :link    | 未被点击之前的样式                          | undefined | 否   |
 | visitedStyle | :visited | 被点击过的样式                              | 否        |
 | focusStyle   | :focus   | input 等类型元素 onFocus 时的样式           | undefined | 否   |
-| hoverStyle   | :hover   | 鼠标移入时显示的样式                        | 否        |
-| activeStyle  | :active  | 鼠标或者触屏点击时的样式                    | 否        |
-| disableStyle |          | 当取消事件监听时的样式                      | 否        |
-| alwayStyle   |          | 以上所有样式时，都会存在的样式，注意        | 否        |
+| hoverStyle   | :hover   | 鼠标移入时显示的样式                        |           | 否   |
+| activeStyle  | :active  | 鼠标或者触屏点击时的样式                    |           | 否   |
+| disableStyle |          | 当取消事件监听时的样式                      |           | 否   |
+| alwayStyle   |          | 会和所有样式合并，并且覆盖重复的样式属性    |           | 否   |
 
 他们会根据事件的触发，和 `style` 合并返回， 如 `{...style, ...activeStyle}`, 只有存在的样式会进行合并
 
@@ -41,9 +41,7 @@ import Pseudo from 'react-dom-pseudo';
 export default () => {
   return (
     <div>
-      <div>
-        example:
-      </div>
+      <div>example:</div>
       <Pseudo
         style={sheet.input}
         hoverStyle={sheet.inputHover}

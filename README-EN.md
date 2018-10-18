@@ -4,7 +4,6 @@
 
 ## [中文文档](README.md)
 
-
 CSS in JS is great, but how do you handle the convenience of handling Pseudo-classes? **react-dom-pseudo** provides a component like the `react-motion` method, conveniently a `react-dom` object Provide pseudo-classes like CSS.
 
 We first install with `npm`:
@@ -17,18 +16,22 @@ $ npm install --save react-dom-pseudo
 
 **react-dom-pseudo** following pseudo-classes are supported：
 
-| Props        | 模拟伪类 | 说明                                        | 默认值    | 必须 |
-| ------------ | -------- | ------------------------------------------- | --------- | ---- |
-| merge        |          | 是否使用 style 和 其他状态的 style 进行合并 | true      | 否   |
-| disable      |          | 是否取消事件监听                            | false     | 否   |
-| style        |          | 默认样式                                    | undefined | 否   |
-| linkStyle    | :link    | 未被点击之前的样式                          | undefined | 否   |
-| visitedStyle | :visited | 被点击过的样式                              | 否        |
-| focusStyle   | :focus   | input 等类型元素 onFocus 时的样式           | undefined | 否   |
-| hoverStyle   | :hover   | 鼠标移入时显示的样式                        | 否        |
-| activeStyle  | :active  | 鼠标或者触屏点击时的样式                    | 否        |
-| disableStyle |          | 当取消事件监听时的样式                      | 否        |
-| alwayStyle   |          | 以上所有样式时，都会存在的样式，注意        | 否        |
+
+Will merge with all styles and override duplicate style properties
+
+| Props        | Analog pseudo-class | Description                                 | Default Value | Is Must |
+| ------------ | ------------------- | ------------------------------------------- | ------------- | ------- |
+| merge        |                     |
+Whether to merge with `style` and `otherStyles` | true          | No      |
+| disable      |                     | Whether to cancel the event listener                            | false         | No      |
+| style        |                     | Style of default                                    | undefined     | No      |
+| linkStyle    | :link               | Style of not clicked before                          | undefined     | No      |
+| visitedStyle | :visited            | Style of that has been clicked                              | No            |
+| focusStyle   | :focus              | Style of type element such as input onFocus           | undefined     | No      |
+| hoverStyle   | :hover              | Style of displayed when the mouse is moved in                        |               | No      |
+| activeStyle  | :active             | Style of when mouse or touch screen clicks                    |               | No      |
+| disableStyle |                     | Style of when disable event listener                      |               | No      |
+| alwayStyle   |                     | Merge with all styles |               | No      |
 
 They will trigger based on the event，and merge `style`， like `{...style, ...activeStyle}`
 
@@ -36,7 +39,7 @@ Only existing styles will be merged
 
 Combination rules for styles: `{...style, ...linkStyle, ...eventStyle, ...disableStyle, ...alwayStyle}`
 
-## 使用
+## Use
 
 ```js
 import Pseudo from 'react-dom-pseudo';
