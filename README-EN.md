@@ -1,5 +1,3 @@
-# react-dom-pseudo
-
 ![](.imgs/hover.gif)
 
 ## [中文文档](README.md)

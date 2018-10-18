@@ -1,5 +1,3 @@
-# react-dom-pseudo
-
 ![](.imgs/hover.gif)
 
 ## [Englist Document](README-EN.md)
