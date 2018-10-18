@@ -1,6 +1,6 @@
 # react-dom-pseudo
 
-![hover](.imgs/hover.git)
+![](.imgs/hover.gif)
 
 CSS in JS 很棒, 但是如何处理方便的处理伪类(Pseudo-classes)? **react-dom-pseudo** 提供一个类似 `react-motion` 方式的组件，方便的为 `react-dom` 对象提供类似 CSS 的伪类.
 
