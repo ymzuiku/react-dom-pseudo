@@ -2,9 +2,7 @@
 
 ![](.imgs/hover.gif)
 
->
-
-[中文文档](README.md)
+## [中文文档](README.md)
 
 
 CSS in JS is great, but how do you handle the convenience of handling Pseudo-classes? **react-dom-pseudo** provides a component like the `react-motion` method, conveniently a `react-dom` object Provide pseudo-classes like CSS.
