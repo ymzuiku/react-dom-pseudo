@@ -1,5 +1,7 @@
 # react-dom-pseudo
 
+[Englist Document](README-EN.md)
+
 ![](.imgs/hover.gif)
 
 CSS in JS 很棒, 但是如何处理方便的处理伪类(Pseudo-classes)? **react-dom-pseudo** 提供一个类似 `react-motion` 方式的组件，方便的为 `react-dom` 对象提供类似 CSS 的伪类.
@@ -10,9 +12,28 @@ CSS in JS 很棒, 但是如何处理方便的处理伪类(Pseudo-classes)? **rea
 $ npm install --save react-dom-pseudo
 ```
 
-## 使用
+## APIs
 
 **react-dom-pseudo** 支持以下伪类：
+
+| Props        | 模拟伪类 | 说明                                        | 默认值    | 必须 |
+| ------------ | -------- | ------------------------------------------- | --------- | ---- |
+| merge        |          | 是否使用 style 和 其他状态的 style 进行合并 | true      | 否   |
+| disable      |          | 是否取消事件监听                            | false     | 否   |
+| style        |          | 默认样式                                    | undefined | 否   |
+| linkStyle    | :link    | 未被点击之前的样式                          | undefined | 否   |
+| visitedStyle | :visited | 被点击过的样式                              | 否        |
+| focusStyle   | :focus   | input 等类型元素 onFocus 时的样式           | undefined | 否   |
+| hoverStyle   | :hover   | 鼠标移入时显示的样式                        | 否        |
+| activeStyle  | :active  | 鼠标或者触屏点击时的样式                    | 否        |
+| disableStyle |          | 当取消事件监听时的样式                      | 否        |
+| alwayStyle   |          | 以上所有样式时，都会存在的样式，注意        | 否        |
+
+他们会根据事件的触发，和 `style` 合并返回， 如 `{...style, ...activeStyle}`, 只有存在的样式会进行合并
+
+样式的组合规则: `{...style, ...linkStyle, ...eventStyle, ...disableStyle, ...alwayStyle}`
+
+## 使用
 
 ```js
 import Pseudo from 'react-dom-pseudo';
@@ -21,10 +42,7 @@ export default () => {
   return (
     <div>
       <div>
-        - 当我们需要给一个 input 组件添加 :focus 和 :hover伪类时， -
-        我们用Pseudo将 input 组件包裹起来，并且用 renderProps 的方式把 events
-        传递到 input 组件中 - 如下例子, 我们添加 hoverStyle、focusStyle 来达到
-        :hover 和 :focus 伪类
+        example:
       </div>
       <Pseudo
         style={sheet.input}
@@ -56,25 +74,6 @@ const sheet = {
   },
 };
 ```
-
-## APIs
-
-| Props        | 模拟伪类 | 说明                                        | 默认值    | 必须 |
-| ------------ | -------- | ------------------------------------------- | --------- | ---- |
-| merge        |          | 是否使用 style 和 其他状态的 style 进行合并 | true      | 否   |
-| disable      |          | 是否取消事件监听                            | false     | 否   |
-| style        |          | 默认样式                                    | undefined | 否   |
-| linkStyle    | :link    | 未被点击之前的样式                          | undefined | 否   |
-| visitedStyle | :visited | 被点击过的样式                              | 否        |
-| focusStyle   | :focus   | input 等类型元素 onFocus 时的样式           | undefined | 否   |
-| hoverStyle   | :hover   | 鼠标移入时显示的样式                        | 否        |
-| activeStyle  | :active  | 鼠标或者触屏点击时的样式                    | 否        |
-| disableStyle |          | 当取消事件监听时的样式                      | 否        |
-| alwayStyle   |          | 以上所有样式时，都会存在的样式，注意        | 否        |
-
-他们会根据事件的触发，和 `style` 合并返回， 如 `{...style, ...activeStyle}`, 只有存在的样式会进行合并
-
-样式的组合规则: `{...style, ...linkStyle, ...eventStyle, ...disableStyle, ...alwayStyle}`
 
 ## 其中做了什么？
 
