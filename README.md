@@ -22,7 +22,7 @@ $ npm install --save react-dom-pseudo
 | disable      |          | 是否取消事件监听                            | false     | 否   |
 | style        |          | 默认样式                                    | undefined | 否   |
 | linkStyle    | :link    | 未被点击之前的样式                          | undefined | 否   |
-| visitedStyle | :visited | 被点击过的样式                              | 否        |
+| visitedStyle | :visited | 被点击过的样式                              |           | 否   |
 | focusStyle   | :focus   | input 等类型元素 onFocus 时的样式           | undefined | 否   |
 | hoverStyle   | :hover   | 鼠标移入时显示的样式                        |           | 否   |
 | activeStyle  | :active  | 鼠标或者触屏点击时的样式                    |           | 否   |
