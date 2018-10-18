@@ -1,5 +1,7 @@
 # react-dom-pseudo
 
+![hover](.imgs/hover.git)
+
 CSS in JS 很棒, 但是如何处理方便的处理伪类(Pseudo-classes)? **react-dom-pseudo** 提供一个类似 `react-motion` 方式的组件，方便的为 `react-dom` 对象提供类似 CSS 的伪类.
 
 我们首先用 `npm` 安装：
@@ -11,14 +13,6 @@ $ npm install --save react-dom-pseudo
 ## 使用
 
 **react-dom-pseudo** 支持以下伪类：
-
-- :hover 对应 `hoverStyle`;
-- :focus 对应 `focusStyle`;
-- :active 对应 `activeStyle`;
-- :link 对应 `linkStyle`;
-- :visited 对应 `visitedStyle`;
-
-他们会根据事件的触发，和 `style` 合并返回， 如 `{...style, ...activeStyle}`
 
 ```js
 import Pseudo from 'react-dom-pseudo';
@@ -63,7 +57,24 @@ const sheet = {
 };
 ```
 
-我们在浏览器里预览一下，很轻松的达到了我们的目的
+## APIs
+
+| Props        | 模拟伪类 | 说明                                        | 默认值    | 必须 |
+| ------------ | -------- | ------------------------------------------- | --------- | ---- |
+| merge        |          | 是否使用 style 和 其他状态的 style 进行合并 | true      | 否   |
+| disable      |          | 是否取消事件监听                            | false     | 否   |
+| style        |          | 默认样式                                    | undefined | 否   |
+| linkStyle    | :link    | 未被点击之前的样式                          | undefined | 否   |
+| visitedStyle | :visited | 被点击过的样式                              | 否        |
+| focusStyle   | :focus   | input 等类型元素 onFocus 时的样式           | undefined | 否   |
+| hoverStyle   | :hover   | 鼠标移入时显示的样式                        | 否        |
+| activeStyle  | :active  | 鼠标或者触屏点击时的样式                    | 否        |
+| disableStyle |          | 当取消事件监听时的样式                      | 否        |
+| alwayStyle   |          | 以上所有样式时，都会存在的样式，注意        | 否        |
+
+他们会根据事件的触发，和 `style` 合并返回， 如 `{...style, ...activeStyle}`, 只有存在的样式会进行合并
+
+样式的组合规则: `{...style, ...linkStyle, ...eventStyle, ...disableStyle, ...alwayStyle}`
 
 ## 其中做了什么？
 
@@ -150,7 +161,9 @@ const SignButton = withHover(SignButton);
 
 ## 我如何获取 hover、active 等状态，做除了样式之外的其他事件？
 
-renderProps 的参数还有第二个，是 `Pseudo` 内部的 `state`, 我们可以获取它之后做其他事件, 如下面的例子，根据 hover 的状态我们修改 `div` 的 `innerText`:
+renderProps 的参数还有第二个，是 `Pseudo` 内部的 `state`, 我们可以获取它之后做其他事件, 如下面的例子，根据 hover 的状态我们修改 `div` 的 `innerText`,
+
+state 有 4 个对象 `{ hover, focus, active, visited }`
 
 ```js
 <Pseudo style={inputStyle} hoverStyle={inputHoverStyle}>
