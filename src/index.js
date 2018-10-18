@@ -134,32 +134,41 @@ class Pseudo extends React.PureComponent {
     }
     // if disable, remove mouse and touch event
     if (this.props.disable) {
-      return children({
-        style: this.fixStyle(),
-      }, this.state);
+      return children(
+        {
+          style: this.fixStyle(),
+        },
+        { ...this.state },
+      );
     }
     // if moblie use touch events
     if (isMobile) {
-      return children({
+      return children(
+        {
+          onFocus: this.handleFocus,
+          onBlur: this.handleBlur,
+          style: this.fixStyle(),
+          onClick: this.handleClick,
+          onTouchStart: this.handleMouseDown,
+          onTouchEnd: this.handleMouseUp,
+          onTouchCancel: this.handleMouseOut,
+        },
+        { ...this.state },
+      );
+    }
+    return children(
+      {
+        onMouseEnter: this.handleMouseIn,
+        onMouseLeave: this.handleMouseOut,
         onFocus: this.handleFocus,
         onBlur: this.handleBlur,
         style: this.fixStyle(),
         onClick: this.handleClick,
-        onTouchStart: this.handleMouseDown,
-        onTouchEnd: this.handleMouseUp,
-        onTouchCancel: this.handleMouseOut,
-      }, this.state);
-    }
-    return children({
-      onMouseEnter: this.handleMouseIn,
-      onMouseLeave: this.handleMouseOut,
-      onFocus: this.handleFocus,
-      onBlur: this.handleBlur,
-      style: this.fixStyle(),
-      onClick: this.handleClick,
-      onMouseDown: this.handleMouseDown,
-      onMouseUp: this.handleMouseUp,
-    }, this.state);
+        onMouseDown: this.handleMouseDown,
+        onMouseUp: this.handleMouseUp,
+      },
+      { ...this.state },
+    );
   }
 }
 

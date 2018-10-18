@@ -3,7 +3,7 @@ import * as React from 'react';
 interface IProps {
   merge?: boolean;
   disable?: boolean;
-  style: React.CSSProperties;
+  style?: React.CSSProperties;
   linkStyle?: React.CSSProperties;
   focusStyle?: React.CSSProperties;
   hoverStyle?: React.CSSProperties;

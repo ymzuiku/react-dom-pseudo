@@ -65,7 +65,7 @@ const sheet = {
 
 我们在浏览器里预览一下，很轻松的达到了我们的目的
 
-## 原理
+## 其中做了什么？
 
 Pseudo 的 renderProps 中包含以下事件
 
@@ -76,9 +76,7 @@ Pseudo 的 renderProps 中包含以下事件
 
 如果项目在移动端执行，就会把 `onMouse?` 相关的事件替换成 `onTouch?` 以兼容移动端
 
-## 其他细节
-
-### renderProps 的方式相比我直接定一个 `Input` 组件有什么优势？
+## renderProps 的方式相比我直接定一个 `Input` 组件有什么优势？
 
 我们先看看如果我们直接定义一个 Input 组件，来模拟 :hover 伪类
 
@@ -134,7 +132,7 @@ const SignButton = withHover(SignButton);
 </Pseudo>
 ```
 
-### `react-dom-pseudo` 还可以更简化么？
+## `react-dom-pseudo` 还可以更简化么？
 
 由于如果子对象是一个 `div` 或是一个 `数组` 时，觉得使用 `childrenFuncion` 的意义不大，所以可以把简写：
 
@@ -150,20 +148,20 @@ const SignButton = withHover(SignButton);
 </Pseudo>
 ```
 
-### 我如何获取 hover、active 等状态，做除了样式之外的其他事件？
+## 我如何获取 hover、active 等状态，做除了样式之外的其他事件？
 
-renderProps 的参数还有第二个，是 `Pseudo` 内部的 `state`, 我们可以获取它之后做其他事件, 如下面的例子，根据hover的状态我们修改 `div` 的 `innerText`:
+renderProps 的参数还有第二个，是 `Pseudo` 内部的 `state`, 我们可以获取它之后做其他事件, 如下面的例子，根据 hover 的状态我们修改 `div` 的 `innerText`:
 
 ```js
 <Pseudo style={inputStyle} hoverStyle={inputHoverStyle}>
   {(events, state) => {
     const mouseState = state.hover ? 'mouseIn' : 'mouseOut';
-    return <div>{mouseState}</div>;
+    return <div {...events}>{mouseState}</div>;
   }}
 </Pseudo>
 ```
 
-### 如何临时屏蔽事件监听?
+## 如何临时屏蔽事件监听?
 
 Pseudo 把 `disable` 设置成 `true`
 
@@ -171,7 +169,7 @@ Pseudo 把 `disable` 设置成 `true`
 <Pseudo disable />
 ```
 
-### 如何在所有状态样式的外层添加样式?
+## 如何在所有状态样式的外层添加样式?
 
 Pseudo 有一个 `alwayStyle` 属性，最终返回的样式是这样的 `{...style, ...otherStyle, ...alwayStyle}`
 
@@ -179,21 +177,21 @@ Pseudo 有一个 `alwayStyle` 属性，最终返回的样式是这样的 `{...st
 <Pseudo alwayStyle={style} />
 ```
 
-### CSS in JS 好用么？
+## CSS in JS 好用么？
 
 因人而异，我觉得比写 `css` 和 `sass` 更好一些，其原因有以下几点：
 
 1. 许多动画库，如 `react-motion`, `react-spring` 等，都会需要操作 style 对象, 所以有复杂动画的组件，它的样式可能分别会存在 css 和 js 中，此时就没有 CSS in JS 简洁;
 2. CSS in JS 可以让组件相关的代码在一个文件里闭合，我们修改一个组件时，不需要来回切换文件;
-3. 如果我们项目较大，需要切分模块，CSS in JS 会比传统的 css文件更好和组件一起切分
+3. 如果我们项目较大，需要切分模块，CSS in JS 会比传统的 css 文件更好和组件一起切分
 
 如何解决一些 CSS in JS 写起来麻烦的事情？
 
 1. `sass` 的颜色混合等功能，可以使用 [`mix-color`](https://github.com/ymzuiku/mix-color) 之类的库轻松解决；
 2. `sass` 的自定义变量，在 CSS in JS 中可以很轻松的定义一个 `globalStyles` 对象达到；
-3. css 的伪类，以前用组件state的写法编写起来比较麻烦、重复，可以用 `react-dom-pseudo` 解决；
+3. css 的伪类，以前用组件 state 的写法编写起来比较麻烦、重复，可以用 `react-dom-pseudo` 解决；
 
-### `react-dom-pseudo` 支持 `react-native` 吗？
+## `react-dom-pseudo` 支持 `react-native` 吗？
 
 由于 `react-dom-pseudo` 用到了 `ReactDOM` 的事件，所以不支持 `react-native`, 或许有时间会补充一个 `react-native-pseudo`
 
