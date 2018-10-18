@@ -4,7 +4,7 @@
 
 ## [Englist Document](README-EN.md)
 
-CSS in JS 很棒, 但是如何处理方便的处理伪类(Pseudo-classes)? **react-dom-pseudo** 提供一个类似 `react-motion` 方式的组件，方便的为 `react-dom` 对象提供类似 CSS 的伪类.
+CSS in JS 很棒, 但是如何方便的处理伪类(Pseudo-classes)? **react-dom-pseudo** 提供一个类似 `react-motion` 方式的组件，方便的为 `react-dom` 对象提供类似 CSS 的伪类.
 
 我们首先用 `npm` 安装：
 
@@ -84,7 +84,7 @@ Pseudo 的 renderProps 中包含以下事件
 
 如果项目在移动端执行，就会把 `onMouse?` 相关的事件替换成 `onTouch?` 以兼容移动端
 
-## renderProps 的方式相比我直接定一个 `Input` 组件有什么优势？
+## renderProps 的方式相比我直接定义一个 `Input` 组件有什么优势？
 
 我们先看看如果我们直接定义一个 Input 组件，来模拟 :hover 伪类
 
@@ -112,15 +112,10 @@ class Input extend React.Component {
 <Input style={inputStyle} hover={inputHoverStyle} />
 ```
 
-一切看起来不错，但是它**不利于扩展**， 例如：我们如果需要给一个 `div` 也添加以上功能，我们需要再写一个 Div 组件， 还是需要重写以上的代码，同理如果我们要给其他已存在的 `SignButton`, `LoginButton` 等组件添加功能，也需要创建一个新的类似于 `SignButtonHover` 的组件
+一切看起来不错，但是它**不利于扩展**， 例如：我们如果需要给一个 `div` 或 `SignButton` 也添加以上功能，我们需要再写一个以上组件
 
-```js
-<Input style={inputStyle} hover={inputHoverStyle} />
-<Div style={inputStyle} hover={inputHoverStyle} />
-<SignButtonHover style={inputStyle} hover={inputHoverStyle} />
-```
 
-当然，我们也可以使用 HOC 的方式, 编写一个 `withHover` 的组件:
+当然，我们也可以使用 HOC 的方式, 编写一个 `withHover` 的组件, 即便如此，也需要在使用之前创建一个新的组件:
 
 ```js
 const SignButton = withHover(SignButton);
@@ -191,15 +186,15 @@ Pseudo 有一个 `alwayStyle` 属性，最终返回的样式是这样的 `{...st
 
 因人而异，我觉得比写 `css` 和 `sass` 更好一些，其原因有以下几点：
 
-1. 许多动画库，如 `react-motion`, `react-spring` 等，都会需要操作 style 对象, 所以有复杂动画的组件，它的样式可能分别会存在 css 和 js 中，此时就没有 CSS in JS 简洁;
+1. 许多动画库，如 `react-motion`, `react-spring` 等，都会需要操作 style 对象, 它的样式可能分别会存在 css 和 js 中，此时就没有 CSS in JS 简洁;
 2. CSS in JS 可以让组件相关的代码在一个文件里闭合，我们修改一个组件时，不需要来回切换文件;
-3. 如果我们项目较大，需要切分模块，CSS in JS 会比传统的 css 文件更好和组件一起切分
+3. 如果我们项目较大，需要切分模块，CSS in JS 会比传统的 css 文件更好和组件一起切分.
 
 如何解决一些 CSS in JS 写起来麻烦的事情？
 
 1. `sass` 的颜色混合等功能，可以使用 [`mix-color`](https://github.com/ymzuiku/mix-color) 之类的库轻松解决；
 2. `sass` 的自定义变量，在 CSS in JS 中可以很轻松的定义一个 `globalStyles` 对象达到；
-3. css 的伪类，以前用组件 state 的写法编写起来比较麻烦、重复，可以用 `react-dom-pseudo` 解决；
+3. css 的伪类，以前用组件 state 的写法编写起来比较麻烦、重复，可以用 `react-dom-pseudo` 解决.
 
 ## `react-dom-pseudo` 支持 `react-native` 吗？
 
