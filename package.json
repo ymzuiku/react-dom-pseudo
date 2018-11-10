@@ -1,6 +1,6 @@
 {
   "name": "react-dom-pseudo",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "dll": [
     "react",
@@ -38,9 +38,9 @@
     "@babel/preset-stage-0": "^7.0.0",
     "@babel/runtime": "^7.0.0",
     "@types/jest": "^23.3.1",
-    "@types/react": "^16.4.18",
-    "@types/react-dom": "^16.0.7",
-    "@types/react-native": "^0.56.17",
+    "@types/react": "^16.7.2",
+    "@types/react-dom": "^16.0.9",
+    "@types/react-native": "^0.57.7",
     "@types/react-test-renderer": "^16.0.2",
     "autoprefixer": "^9.0.0",
     "babel-eslint": "^9.0.0",
@@ -64,9 +64,9 @@
     "postcss-flexbugs-fixes": "^3.3.1",
     "postcss-loader": "^2.1.5",
     "pre-commit": "^1.2.2",
-    "react": "^16.5.1",
+    "react": "^16.7.0-alpha.0",
     "react-dev-utils": "^5.0.2",
-    "react-dom": "^16.5.1",
+    "react-dom": "^16.7.0-alpha.0",
     "react-hot-loader": "^4.3.3",
     "react-test-renderer": "16.4.1",
     "source-map-loader": "^0.2.3",
@@ -78,6 +78,7 @@
     "url-loader": "^1.0.1",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.7"
+    "webpack-dev-server": "^3.1.7",
+    "webpack-node-externals": "^1.7.2"
   }
 }
