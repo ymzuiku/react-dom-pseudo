@@ -1,9 +1,8 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 
-interface IProps {
+interface IProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   merge?: boolean;
   disable?: boolean;
-  style?: React.CSSProperties;
   linkStyle?: React.CSSProperties;
   focusStyle?: React.CSSProperties;
   hoverStyle?: React.CSSProperties;
@@ -11,7 +10,6 @@ interface IProps {
   visitedStyle?: React.CSSProperties;
   disableStyle?: React.CSSProperties;
   alwayStyle?: React.CSSProperties;
-  children?: any;
 }
 
-declare const Pseudo: (props: IProps) => any;
+export default class extends Component<IProps> {}

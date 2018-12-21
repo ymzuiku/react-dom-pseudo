@@ -1,84 +1,164 @@
 {
   "name": "react-dom-pseudo",
-  "version": "1.0.4",
-  "description": "",
-  "dll": [
-    "react",
-    "redux",
-    "react-redux",
-    "redux-thunk",
-    "immutable"
-  ],
-  "main": "lib/index.js",
+  "version": "1.1.2",
+  "private": false,
+  "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
-    "dll": "webpack --progress --config scripts/webpack.dll.js",
-    "build": "prod=1 webpack --config scripts/webpack.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "lib": "node scripts/build.lib.js",
+    "lint-hook": "node_modules/.bin/eslint 'src/**/*.js' --cache --cache-location './node_modules/.eslint_cache/'",
+    "test-hook": "jest",
+    "test": "node scripts/test.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "7.1.0",
+    "styled-components": "^4.1.2",
+    "@svgr/webpack": "2.4.1",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "9.0.0",
+    "babel-jest": "23.6.0",
+    "babel-loader": "8.0.4",
+    "babel-plugin-named-asset-import": "^0.2.3",
+    "babel-plugin-styled-components": "^1.9.2",
+    "babel-preset-react-app": "^6.1.0",
+    "bfj": "6.1.1",
+    "case-sensitive-paths-webpack-plugin": "2.1.2",
+    "chalk": "2.4.1",
+    "css-loader": "1.0.0",
+    "dotenv": "6.0.0",
+    "dotenv-expand": "4.2.0",
+    "eslint": "5.6.0",
+    "eslint-config-react-app": "^3.0.5",
+    "eslint-loader": "2.1.1",
+    "eslint-plugin-flowtype": "2.50.1",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jsx-a11y": "6.1.2",
+    "eslint-plugin-react": "7.11.1",
+    "file-loader": "2.0.0",
+    "fork-ts-checker-webpack-plugin-alt": "0.4.14",
+    "fs-extra": "7.0.0",
+    "html-webpack-plugin": "4.0.0-alpha.2",
+    "identity-obj-proxy": "3.0.0",
+    "immutable": "^4.0.0-rc.12",
+    "jest": "^23.6.0",
+    "jest-pnp-resolver": "1.0.1",
+    "jest-resolve": "23.6.0",
+    "jest-styled-components": "^6.3.1",
+    "mini-css-extract-plugin": "0.4.3",
+    "optimize-css-assets-webpack-plugin": "5.0.1",
+    "pnp-webpack-plugin": "1.1.0",
+    "postcss-flexbugs-fixes": "4.1.0",
+    "postcss-loader": "3.0.0",
+    "postcss-preset-env": "6.0.6",
+    "postcss-safe-parser": "4.0.1",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.15.3",
+    "react": "^16.7.0-alpha.2",
+    "react-app-polyfill": "^0.1.3",
+    "react-dev-utils": "^6.1.1",
+    "react-dom": "^16.7.0-alpha.2",
+    "react-loadable": "^5.5.0",
+    "react-redux": "^6.0.0",
+    "react-router-dom": "^4.3.1",
+    "react-spring": "^6.1.10",
+    "react-test-renderer": "^16.7.0-alpha.2",
+    "react-test-renderer-helper": "^0.3.1",
+    "redux": "^4.0.1",
+    "redux-action": "^1.2.2",
+    "redux-saga": "^0.16.2",
+    "resolve": "1.8.1",
+    "sass-loader": "7.1.0",
+    "style-loader": "0.23.0",
+    "terser-webpack-plugin": "1.1.0",
+    "url-loader": "1.1.1",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "enzyme-to-json": "^3.3.5",
+    "webpack": "4.19.1",
+    "webpack-dev-server": "3.1.9",
+    "webpack-manifest-plugin": "2.0.4",
+    "webpack-node-externals": "^1.7.2",
+    "workbox-webpack-plugin": "3.6.3"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "pre-commit": [
+    "lint-hook",
+    "test-hook"
+  ],
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/index.js",
+      "!src/**/*.d.ts",
+      "!src/**/*.trust.js",
+      "!src/**/*.test_.js",
+      "!**/**.trust/*"
+    ],
+    "resolver": "jest-pnp-resolver",
+    "setupFiles": [
+      "react-app-polyfill/jsdom"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/?(*.)(spec|test).{js,jsx,ts,tsx}",
+      "<rootDir>/tests/**/?(*.)(spec|test).{js,jsx,ts,tsx}",
+      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,ts,tsx}"
+    ],
+    "testEnvironment": "jsdom",
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web",
+      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+    },
+    "moduleFileExtensions": [
+      "web.js",
+      "js",
+      "web.ts",
+      "ts",
+      "web.tsx",
+      "tsx",
+      "json",
+      "web.jsx",
+      "jsx",
+      "node"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      [
+        "babel-plugin-styled-components"
+      ]
+    ]
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ymzuiku/react-dom-pseudo.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ymzuiku/react-dom-pseudo/issues"
+    "url": "git+https://github.com/ymzuiku/react-dom-pseudo.git"
   },
-  "homepage": "https://github.com/ymzuiku/react-dom-pseudo#readme",
-  "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/plugin-proposal-class-properties": "^7.0.0",
-    "@babel/plugin-proposal-decorators": "^7.0.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.0.0",
-    "@babel/polyfill": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/preset-stage-0": "^7.0.0",
-    "@babel/runtime": "^7.0.0",
-    "@types/jest": "^23.3.1",
-    "@types/react": "^16.7.2",
-    "@types/react-dom": "^16.0.9",
-    "@types/react-native": "^0.57.7",
-    "@types/react-test-renderer": "^16.0.2",
-    "autoprefixer": "^9.0.0",
-    "babel-eslint": "^9.0.0",
-    "babel-jest": "23.4.2",
-    "babel-loader": "8.0.0-beta.0",
-    "babel-plugin-module-resolver": "^3.1.1",
-    "babel-plugin-styled-components": "^1.7.1",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "clean-webpack-plugin": "^0.1.19",
-    "copy-webpack-plugin": "^4.5.2",
-    "css-loader": "^1.0.0",
-    "eslint": "^5.5.0",
-    "eslint-loader": "^2.1.0",
-    "eslint-plugin-react": "^7.11.1",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "fast-uglifyjs-plugin": "^0.3.0",
-    "file-loader": "^1.1.11",
-    "fs-extra": "^7.0.0",
-    "html-webpack-plugin": "^3.2.0",
-    "jest": "23.5.0",
-    "postcss-flexbugs-fixes": "^3.3.1",
-    "postcss-loader": "^2.1.5",
-    "pre-commit": "^1.2.2",
-    "react": "^16.7.0-alpha.0",
-    "react-dev-utils": "^5.0.2",
-    "react-dom": "^16.7.0-alpha.0",
-    "react-hot-loader": "^4.3.3",
-    "react-test-renderer": "16.4.1",
-    "source-map-loader": "^0.2.3",
-    "style-loader": "^0.21.0",
-    "ts-jest": "^23.1.4",
-    "ts-loader": "^4.4.2",
-    "tsconfig-paths-webpack-plugin": "^3.2.0",
-    "typescript": "^3.0.3",
-    "url-loader": "^1.0.1",
-    "webpack": "^4.16.1",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.7",
-    "webpack-node-externals": "^1.7.2"
-  }
+  "homepage": "git+https://github.com/ymzuiku/react-dom-pseudo.git"
 }
