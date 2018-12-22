@@ -1,16 +1,5 @@
 import React from 'react';
 
-let isMobile = false;
-if (typeof navigator === 'undefined') {
-  isMobile = true;
-} else if (
-  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    navigator.userAgent,
-  )
-) {
-  isMobile = true;
-}
-
 class Pseudo extends React.PureComponent {
   static defaultProps = {
     merge: true,
@@ -36,6 +25,9 @@ class Pseudo extends React.PureComponent {
         visited: true,
       });
     }
+    // if (window.innerWidth > 640 && typeof this.props.onClick === 'function') {
+    //   this.props.onClick({ ...this.state });
+    // }
   };
   handleMouseIn = () => {
     this.setState({
@@ -57,6 +49,9 @@ class Pseudo extends React.PureComponent {
     this.setState({
       active: false,
     });
+    if (typeof this.props.onClick === 'function') {
+      this.props.onClick({ ...this.state });
+    }
   };
   handleFocus = () => {
     this.setState({
@@ -121,6 +116,7 @@ class Pseudo extends React.PureComponent {
       visitedStyle,
       disableStyle,
       alwayStyle,
+      onClick,
       ...rest
     } = this.props;
     return <div {...event} {...rest} />;
@@ -142,7 +138,7 @@ class Pseudo extends React.PureComponent {
       );
     }
     // if moblie use touch events
-    if (isMobile) {
+    if (window.innerWidth <= 640) {
       return children(
         {
           onFocus: this.handleFocus,

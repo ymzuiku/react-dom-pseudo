@@ -1,10 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.lib';
+import Button from './index.lib';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+function handleOnClick() {
+  console.log('click');
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(
+  <div>
+    <Button activeStyle={{ backgroundColor: '#f3f3f3' }} onClick={handleOnClick}>
+      test
+    </Button>
+  </div>,
+  document.getElementById('root'),
+);

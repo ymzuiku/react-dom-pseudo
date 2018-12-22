@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index onClick status snapshots: add 1`] = `"<div onMouseEnter={[Function]} onMouseLeave={[Function]} onFocus={[Function]} onBlur={[Function]} style={{...}} onClick={[Function]} onMouseDown={[Function]} onMouseUp={[Function]} />"`;
+
+exports[`Index onClick status snapshots: add-state 1`] = `
+Object {
+  "active": false,
+  "focus": false,
+  "hover": false,
+  "visited": true,
+}
+`;
+
+exports[`Index onClick status snapshots: init 1`] = `"<div onMouseEnter={[Function]} onMouseLeave={[Function]} onFocus={[Function]} onBlur={[Function]} style={{...}} onClick={[Function]} onMouseDown={[Function]} onMouseUp={[Function]} />"`;
+
+exports[`Index styled-compoments 1`] = `
+Object {
+  "props": Object {
+    "activeStyle": undefined,
+    "alwayStyle": undefined,
+    "disable": false,
+    "disableStyle": undefined,
+    "focusStyle": undefined,
+    "hoverStyle": undefined,
+    "linkStyle": undefined,
+    "merge": true,
+    "style": undefined,
+    "visitedStyle": undefined,
+  },
+  "state": Object {
+    "active": false,
+    "focus": false,
+    "hover": false,
+    "visited": false,
+  },
+  "status": undefined,
+  "zip": <div
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    style={Object {}}
+  />,
+}
+`;
+
+exports[`Index updateNoChange: firstDebug 1`] = `"<div onMouseEnter={[Function]} onMouseLeave={[Function]} onFocus={[Function]} onBlur={[Function]} style={{...}} onClick={[Function]} onMouseDown={[Function]} onMouseUp={[Function]} />"`;
