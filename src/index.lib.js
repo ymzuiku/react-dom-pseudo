@@ -138,28 +138,17 @@ class Pseudo extends React.PureComponent {
       );
     }
     // if moblie use touch events
-    if (window.innerWidth <= 640) {
-      return children(
-        {
-          onFocus: this.handleFocus,
-          onBlur: this.handleBlur,
-          style: this.fixStyle(),
-          onClick: this.handleClick,
-          onTouchStart: this.handleMouseDown,
-          onTouchEnd: this.handleMouseUp,
-          onTouchCancel: this.handleMouseOut,
-        },
-        { ...this.state },
-      );
-    }
     return children(
       {
-        onMouseEnter: this.handleMouseIn,
-        onMouseLeave: this.handleMouseOut,
+        style: this.fixStyle(),
         onFocus: this.handleFocus,
         onBlur: this.handleBlur,
-        style: this.fixStyle(),
         onClick: this.handleClick,
+        onTouchStart: this.handleMouseDown,
+        onTouchEnd: this.handleMouseUp,
+        onTouchCancel: this.handleMouseOut,
+        onMouseEnter: this.handleMouseIn,
+        onMouseLeave: this.handleMouseOut,
         onMouseDown: this.handleMouseDown,
         onMouseUp: this.handleMouseUp,
       },
