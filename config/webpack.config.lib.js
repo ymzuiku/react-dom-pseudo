@@ -17,7 +17,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt')
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const nodeExternals = require('webpack-node-externals');
 
-const paths = require('./libPaths');
+const paths = require('./paths.lib');
 
 const publicPath = paths.servedPath;
 const shouldUseRelativeAssetPaths = publicPath === './';
@@ -158,6 +158,7 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
+      // 'src': path.resolve(__dirname, '../src'),
     },
     plugins: [PnpWebpackPlugin, new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson])],
   },
@@ -197,7 +198,7 @@ module.exports = {
             loader: require.resolve('url-loader'),
             options: {
               limit: 10000,
-              name: 'static/media/[name].[hash:8].[ext]',
+              name: 'lib_media/[name].[hash:8].[ext]',
             },
           },
           {
@@ -289,7 +290,7 @@ module.exports = {
             loader: require.resolve('file-loader'),
             exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
             options: {
-              name: 'media/[name].[ext]',
+              name: '/lib_media/[name].[ext]',
             },
           },
           // ** STOP ** Are you adding a new loader?

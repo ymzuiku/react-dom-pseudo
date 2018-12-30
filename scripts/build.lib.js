@@ -20,7 +20,7 @@ const fs = require('fs-extra');
 const webpack = require('webpack');
 const bfj = require('bfj');
 const config = require('../config/webpack.config.lib');
-const paths = require('../config/libPaths');
+const paths = require('../config/paths.lib');
 const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
 const printHostingInstructions = require('react-dev-utils/printHostingInstructions');
@@ -178,8 +178,8 @@ function copyPublicFolder() {
     dereference: true,
     filter: file => file !== paths.appHtml,
   });
-  for (const k in paths.dtsList) {
-    const p = paths.dtsList[k];
+  for (const k in paths.copyList) {
+    const p = paths.copyList[k];
     fs.copySync(p, paths.appBuild + '/' + k, {
       dereference: true,
     });
@@ -187,6 +187,20 @@ function copyPublicFolder() {
   if (process.env.cp) {
     fs.copyFile(path.resolve(__dirname, `../${process.env.cp}`), path.resolve(__dirname, `../dist/${process.env.cp}`));
   }
-  fs.copySync(path.resolve(__dirname, '../README.md'), path.resolve(__dirname, '../dist/README.md'));
+  if (fs.existsSync(path.resolve(__dirname, '../README.md'))) {
+    fs.copySync(path.resolve(__dirname, '../README.md'), path.resolve(__dirname, '../dist/README.md'));
+  }
+  if (fs.existsSync(path.resolve(__dirname, '../README-EN.md'))) {
+    fs.copySync(path.resolve(__dirname, '../README-EN.md'), path.resolve(__dirname, '../dist/README-EN.md'));
+  }
+  if (fs.existsSync(path.resolve(__dirname, '../README-CN.md'))) {
+    fs.copySync(path.resolve(__dirname, '../README-CN.md'), path.resolve(__dirname, '../dist/README-CN.md'));
+  }
+  packageJSON.main = 'index.js';
+  packageJSON.types = 'index.d.ts';
+  if (process.env.copy) {
+    packageJSON['copy-dependencies'] = { ...packageJSON.dependencies };
+    packageJSON.dependencies = {};
+  }
   fs.writeJSONSync(path.resolve(__dirname, '../dist/package.json'), packageJSON, { spaces: 2 });
 }

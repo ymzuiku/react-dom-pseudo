@@ -14,22 +14,23 @@ $ npm install --save react-dom-pseudo
 
 **react-dom-pseudo** 支持以下伪类：
 
-| Props        | 模拟伪类 | 说明                                        | 默认值    | 必须 |
-| ------------ | -------- | ------------------------------------------- | --------- | ---- |
-| merge        |          | 是否使用 style 和 其他状态的 style 进行合并 | true      | 否   |
-| disable      |          | 是否取消事件监听                            | false     | 否   |
-| style        |          | 默认样式                                    | undefined | 否   |
-| linkStyle    | :link    | 未被点击之前的样式                          | undefined | 否   |
-| visitedStyle | :visited | 被点击过的样式                              | undefined | 否   |
-| focusStyle   | :focus   | input 等类型元素 onFocus 时的样式           | undefined | 否   |
-| hoverStyle   | :hover   | 鼠标移入时显示的样式                        | undefined | 否   |
-| activeStyle  | :active  | 鼠标或者触屏点击时的样式                    | undefined | 否   |
-| disableStyle |          | 当取消事件监听时的样式                      | undefined | 否   |
-| alwayStyle   |          | 会和所有样式合并，并且覆盖重复的样式属性    | undefined | 否   |
+| Props             | 模拟伪类 | 说明                                        | 默认值    | 必须 |
+| ----------------- | -------- | ------------------------------------------- | --------- | ---- |
+| merge             |          | 是否使用 style 和 其他状态的 style 进行合并 | true      | 否   |
+| disable           |          | 是否取消事件监听                            | false     | 否   |
+| style             |          | 默认样式                                    | undefined | 否   |
+| mobileStyle       |          | 移动端情况下，覆盖默认样式                  | undefined | 否   |
+| visitedStyle      | :visited | 被点击过的样式                              | undefined | 否   |
+| focusStyle        | :focus   | input 等类型元素 onFocus 时的样式           | undefined | 否   |
+| hoverStyle        | :hover   | 鼠标移入时显示的样式                        | undefined | 否   |
+| activeStyle       | :active  | 鼠标或者触屏点击时的样式                    | undefined | 否   |
+| activeMobileStyle | :active  | 移动端情况下，鼠标或者触屏点击时的样式      | undefined | 否   |
+| disableStyle      |          | 当取消事件监听时的样式                      | undefined | 否   |
+| alwayStyle        |          | 会和所有样式合并，并且覆盖重复的样式属性    | undefined | 否   |
 
 他们会根据事件的触发，和 `style` 合并返回， 如 `{...style, ...activeStyle}`, 只有存在的样式会进行合并
 
-样式的组合规则: `{...style, ...linkStyle, ...eventStyle, ...disableStyle, ...alwayStyle}`
+样式的组合规则: `{...style, ...eventStyle, ...disableStyle, ...alwayStyle}`
 
 ## 使用
 
@@ -40,11 +41,7 @@ export default () => {
   return (
     <div>
       <div>example:</div>
-      <Pseudo
-        style={sheet.input}
-        hoverStyle={sheet.inputHover}
-        focusStyle={sheet.inputFocus}
-      >
+      <Pseudo style={sheet.input} hoverStyle={sheet.inputHover} focusStyle={sheet.inputFocus}>
         {events => <input {...events} />}
       </Pseudo>
     </div>
@@ -111,7 +108,6 @@ class Input extend React.Component {
 ```
 
 一切看起来不错，但是它**不利于扩展**， 例如：我们如果需要给一个 `div` 或 `SignButton` 也添加以上功能，我们需要再写一个以上组件
-
 
 当然，我们也可以使用 HOC 的方式, 编写一个 `withHover` 的组件, 即便如此，也需要在使用之前创建一个新的组件:
 

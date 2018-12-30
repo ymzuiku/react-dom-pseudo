@@ -1,9 +1,9 @@
 {
   "name": "react-dom-pseudo",
-  "version": "1.1.5",
+  "version": "1.1.21",
   "private": false,
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "src/index.lib.js",
+  "types": "src/index.lib.d.ts",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
